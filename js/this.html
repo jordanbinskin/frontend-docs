@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event delegation</title>
+</head>
+<style>
+</style>
+<body>
+  <h1><a href="index.html">Home</a></h1>
+  <p>
+      'this' is a keyword in JavaScript, which returns a reference to an object or undefined. It is implemented in many programming languages. However its behaviour in JavaScript varies compared to other languages, mainly where 'this' is called.
+    </p>
+    <p>
+      'this' in Javascript is determined by when it is called, in an order of precedence.
+    </p>
+    <ol>
+      <li>'new' Keyword - If the invoked function is called using the new keyword then this will refer to the newly instantiated object</li>
+      <code>
+          function ConstructorExample() {
+            console.log(this);
+            this.value = 10;
+            console.log(this);
+        }
+        new ConstructorExample();
+        // -> {}
+        // -> { value: 10 }
+      </code>
+      <li>If the methods belonging to the function prototype, apply, call or bind are called, then 'this' in the context of the function becomes the argument supplied to these function methods.
+        <code>
+            function fn() {
+              console.log(this);
+          }
+          var obj = {
+              value: 5
+          };
+          var boundFn = fn.bind(obj);
+          boundFn();     // -> { value: 5 }
+          fn.call(obj);  // -> { value: 5 }
+          fn.apply(obj); // -> { value: 5 }
+        </code>
+        side note, bind will create a new function with the properties provided in the function call. While apply and call does not create a new function, it merely will invoke the function with the properties belonging to this immediately, apply takes an array while call will take the arguments separately listed out.
+      </li>
+      <li>So, outside of the methods mentioned above - when a method is called on an object then this will be the value of the object to the left of the dot.
+        <code>
+            var obj = {
+              value: 5,
+              printThis: function() {
+                  console.log(this);
+              }
+          };
+          obj.printThis(); // -> { value: 5, printThis: ƒ }
+        </code>
+      </li>
+      <li>
+        If a function is invoked freely on its own, referred to a free function incovation - then it will point to the global object.
+      </li>
+    </ol>
+</body>
+<script>
+</script>
+</html>

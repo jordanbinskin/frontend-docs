@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+      <li><a href="/event-delegation.html">Event delegation</a></li>
+      <li><a href="/this.html">'this' keyword</a></li>
+  </ul>
+  <p>
+    'this' is a keyword in JavaScript, which returns a reference to an object or undefined. It is implemented in many programming languages. However its behaviour in JavaScript varies compared to other languages, mainly where 'this' is called.
+  </p>
+  <p>
+    'this' in Javascript is determined by when it is called, in an order of precedence.
+  </p>
+  <ol>
+    <li>'new' Keyword - If the invoked function is called using the new keyword then this will refer to the newly instantiated object</li>
+    <code>
+        function ConstructorExample() {
+          console.log(this);
+          this.value = 10;
+          console.log(this);
+      }
+      new ConstructorExample();
+      // -> {}
+      // -> { value: 10 }
+    </code>
+  </ol>
+</body>
+</html>
